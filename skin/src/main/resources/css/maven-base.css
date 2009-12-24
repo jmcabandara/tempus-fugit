@@ -30,6 +30,9 @@ div.clear hr{
 #bannerLeft, #bannerRight {
   font-size: xx-large;
   font-weight: bold;
+  color: #C4C3DD;
+  margin: 5px;
+  padding-top: 50px
 }
 #bannerLeft img, #bannerRight img {
   margin: 0px;

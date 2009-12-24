@@ -477,10 +477,21 @@
       <hr/>
     </div>
     <div id="footer">
-      <div class="xright">&#169;#copyright()#publishDate( "bottom" $decoration.publishDate $decoration.version ) all rights reserved</div>
+      <div class="xright">&#169;#copyright()#publishDate( "bottom" $decoration.publishDate $decoration.version ), all rights reserved</div>
       <div class="clear">
         <hr/>
       </div>
     </div>
+    
+    <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3327317-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
   </body>
 </html>

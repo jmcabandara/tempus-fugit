@@ -169,7 +169,7 @@ table {
 }
 #banner {
   height: 93px;
-  /* background: url(../images/banner.jpg); */
+  background: url(../images/banner.png); 
 }
 #navcolumn ul {
   margin: 5px 0 15px -0em;
