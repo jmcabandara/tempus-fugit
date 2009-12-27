@@ -24,38 +24,6 @@
   #end
 #end
 ##
-#macro ( banner $banner $id )
-  #if ( $banner )
-    #if( $banner.href )
-      <a href="$banner.href" id="$id">
-    #else
-      <span id="$id">
-    #end
-##
-    #if( $banner.src )
-        #set ( $src = $banner.src )
-        #if ( ! ( $src.toLowerCase().startsWith("http") || $src.toLowerCase().startsWith("https") ) )
-            #set ( $src = $PathTool.calculateLink( $src, $relativePath ) )
-            #set ( $src = $src.replaceAll( "\\", "/" ) )
-        #end
-        #if ( $banner.alt )
-            #set ( $alt = $banner.alt )
-        #else
-            #set ( $alt = "" )
-        #end
-        <img src="$src" alt="$alt" />
-    #else
-        $banner.name
-    #end
-##
-    #if( $banner.href )
-        </a>
-    #else
-        </span>
-    #end
-  #end
-#end
-##
 #macro ( links $links )
   #set ( $counter = 0 )
   #foreach( $item in $links )
@@ -446,13 +414,6 @@
     #end
   </head>
   <body class="composite">
-    <div id="banner">
-      #banner( $decoration.bannerLeft "bannerLeft" )
-      #banner( $decoration.bannerRight "bannerRight" )
-      <div class="clear">
-        <hr/>
-      </div>
-    </div>
     <div id="breadcrumbs">
       #publishDate( "left" $decoration.publishDate $decoration.version )
       <div class="xright">#links( $decoration.body.links )#publishDate( "right" $decoration.publishDate $decoration.version )</div>
