@@ -438,7 +438,8 @@
       <hr/>
     </div>
     <div id="footer">
-      <div class="xright">&#169;#copyright()#publishDate( "bottom" $decoration.publishDate $decoration.version ), all rights reserved</div>
+      <div class="xright">&#169;#copyright()#publishDate( "bottom" $decoration.publishDate $decoration.version ), all rights reserved 
+      | <a href="exclude.html">exclude</a> from analytics</div>
       <div class="clear">
         <hr/>
       </div>
