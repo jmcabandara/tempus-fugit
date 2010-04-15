@@ -156,10 +156,10 @@ public final class DurationTest {
 
     @Test
     public void toStringOnDuration() {
-        assertThat(millis(1099).toString(), is(equalTo("Duration 1099 MILLISECONDS")));
-        assertThat(seconds(1).toString(), is(equalTo("Duration 1 SECONDS")));
-        assertThat(minutes(60).toString(), is(equalTo("Duration 3600 SECONDS")));
-        assertThat(hours(24).toString(), is(equalTo("Duration 86400 SECONDS")));
-        assertThat(days(1).toString(), is(equalTo("Duration 86400 SECONDS")));
+        assertThat(millis(1099).toString(), is(equalTo("Duration 1099 milliseconds")));
+        assertThat(seconds(1).toString(), is(equalTo("Duration 1 seconds")));
+        assertThat(minutes(60).toString(), is(equalTo("Duration 60 minutes")));
+        assertThat(hours(24).toString(), is(equalTo("Duration 24 hours")));
+        assertThat(days(1).toString(), is(equalTo("Duration 1 days")));
     }
 }

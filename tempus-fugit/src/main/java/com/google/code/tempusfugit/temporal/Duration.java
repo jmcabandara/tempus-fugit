@@ -39,17 +39,18 @@ public class Duration {
     }
 
     public static Duration minutes(long minutes) {
-        long seconds = minutes * 60;
-        validate(seconds,  TimeUnit.SECONDS);
-        return new Duration(seconds, TimeUnit.SECONDS);
+        validate(minutes,  TimeUnit.MINUTES);
+        return new Duration(minutes, TimeUnit.MINUTES);
     }
 
     public static Duration hours(long hours) {
-        return minutes(hours * 60);
+        validate(hours,  TimeUnit.HOURS);
+        return new Duration(hours, TimeUnit.HOURS);
     }
 
     public static Duration days(long days) {
-        return hours(days * 24);
+        validate(days,  TimeUnit.DAYS);
+        return new Duration(days, TimeUnit.DAYS);
     }
 
     private static void validate(long value, TimeUnit unit) {
@@ -67,15 +68,15 @@ public class Duration {
     }
 
     public long inMinutes() {
-        return unit.toSeconds(value) / 60;
+        return unit.toMinutes(value);
     }
 
     public long inHours() {
-        return inMinutes() / 60;
+        return unit.toHours(value);
     }
 
     public long inDays() {
-        return inHours() / 24;
+        return unit.toDays(value);
     }
 
     public Duration plus(Duration duration) {
@@ -110,6 +111,6 @@ public class Duration {
     }
 
     public String toString() {
-        return "Duration " + value + " " + unit;
+        return "Duration " + value + " " + unit.toString().toLowerCase();
     }
 }
