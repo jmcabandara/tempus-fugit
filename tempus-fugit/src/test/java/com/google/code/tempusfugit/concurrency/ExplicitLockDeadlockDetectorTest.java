@@ -26,12 +26,14 @@ import org.junit.runner.RunWith;
 
 import java.io.PrintStream;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static com.google.code.tempusfugit.concurrency.ThreadUtils.resetInterruptFlagWhen;
 import static org.hamcrest.Matchers.containsString;
 
 @RunWith(JMock.class)
-public class DeadlockDetectorTest {
+public class ExplicitLockDeadlockDetectorTest {
 
     private final Mockery context = new Mockery() {{
         setImposteriser(ClassImposteriser.INSTANCE);
@@ -39,8 +41,8 @@ public class DeadlockDetectorTest {
 
     private PrintStream stream = context.mock(PrintStream.class);
 
-    private final Cash cash = new Cash();
-    private final Cat nibbles = new Cat();
+    private final ReentrantLock nibbles = new ReentrantLock();
+    private final ReentrantLock cash = new ReentrantLock();
 
     private final CountDownLatch latch = new CountDownLatch(2);
 
@@ -57,16 +59,16 @@ public class DeadlockDetectorTest {
         setExpectationsOn(stream);
         DeadlockDetector.printDeadlocks(stream);
     }
-    
+
     private void setExpectationsOn(final PrintStream stream) {
         final Sequence sequence = context.sequence("output");
         context.checking(new Expectations() {{
             one(stream).println(with(containsString("Deadlock detected"))); inSequence(sequence);
             one(stream).println(with(containsString("Negotiator-Thread"))); inSequence(sequence);
-            one(stream).println(with(containsString("waiting to lock Monitor of " + Cat.class.getName()))); inSequence(sequence);
+            one(stream).println(with(containsString("waiting to lock Monitor of " + ReentrantLock.class.getName()))); inSequence(sequence);
             one(stream).println(with(containsString("which is held by \"Kidnapper-Thread"))); inSequence(sequence);
             one(stream).println(with(containsString("Kidnapper-Thread"))); inSequence(sequence);
-            one(stream).println(with(containsString("waiting to lock Monitor of " + Cash.class.getName()))); inSequence(sequence);
+            one(stream).println(with(containsString("waiting to lock Monitor of " + ReentrantLock.class.getName()))); inSequence(sequence);
             one(stream).println(with(containsString("which is held by \"Negotiator-Thread"))); inSequence(sequence);
             allowing(stream).println();
         }});
@@ -83,15 +85,13 @@ public class DeadlockDetectorTest {
         }
 
         private void notWillingToLetNibblesGoWithoutCash() {
-            synchronized (nibbles) {
-                countdownAndAwait(latch);
-                synchronized (cash) {
-                    take(cash);
-                }
-            }
+            nibbles.lock();
+            countdownAndAwait(latch);
+            take(cash);
         }
 
-        private void take(Cash cash) {
+        private void take(Lock cash) {
+            cash.lock();
         }
 
     }
@@ -108,15 +108,13 @@ public class DeadlockDetectorTest {
         }
 
         private void notWillingToLetCashGoWithoutNibbles() {
-            synchronized (cash) {
-                countdownAndAwait(latch);
-                synchronized (nibbles) {
-                    take(nibbles);
-                }
-            }
+            cash.lock();
+            countdownAndAwait(latch);
+            take(nibbles);
         }
 
-        private void take(Cat nibbles) {
+        private void take(Lock nibbles) {
+            nibbles.lock();
         }
 
     }
