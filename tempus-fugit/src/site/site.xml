@@ -35,10 +35,6 @@
     </skin>
 
     <body>
-        <links>
-            <item name="Blog" href="http://pequenoperro.blogspot.com"/>
-        </links>
-
         <menu name="Overview">
             <item name="Introduction" href="index.html"/>
             <item name="Download" href="download.html"/>
@@ -52,7 +48,6 @@
             </item>
 
         </menu>
-        <menu ref="reports"/>
 
     </body>
 </project>
