@@ -25,16 +25,11 @@
     </properties>
 
     <body>
-        <section name="Usage">
+        <section name="We've Moved...">
             <p>
-                Refer to the documentation below for usage instructions.
+                The tempus-fugit project page has moved to<a href="http://tempusfugitlibrary.org">
+                http://tempusfugitlibrary.org</a>, please update your links.
             </p>
-            <ul>
-                <li><p>About <a href="concurrency.html">concurrency</a></p></li>
-                <li><p>About <a href="time.html">time-dependent</a> code</p></li>
-                <li><p>About <a href="annotations.html">annotations</a></p></li>
-            </ul>
         </section>
-
     </body>
 </document>

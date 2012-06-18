@@ -20,30 +20,17 @@
           xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Introduction</title>
+        <title>We've Moved...</title>
         <author>Toby Weston</author>
     </properties>
 
     <body>
-
-        <section name="Introduction">
-
+        <section name="We've Moved...">
             <p>
-                The tempus-fugit library is a small collection of classes and interfaces capturing common abstractions
-                useful when writing concurrent and time sensitive code.
+                The tempus-fugit project page has moved to<a href="http://tempusfugitlibrary.org">
+                http://tempusfugitlibrary.org</a>, please update your links.
             </p>
-            <p>
-                It's hosted on Google Code at<a href="http://code.google.com/p/tempus-fugit/">
-                http://code.google.com/p/tempus-fugit/</a>.
-            </p>
-            <p>
-                The best way to get a feel for what the library can offer is to have a look through the usage section of
-                the site. You can also look through the source code and in particular the test code for examples.
-            </p>
-            <img src="images/fugitsm.jpg" alt="time flies"/>
-
         </section>
-
     </body>
 
 </document>
